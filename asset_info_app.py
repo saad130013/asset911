@@ -4,10 +4,9 @@ from fpdf import FPDF
 import tempfile
 import os
 
-# تحميل البيانات من ملف Excel
 @st.cache_data
 def load_data():
-    df = pd.read_excel("- نموذج ب هيئة المساحة الجيولوجية السعودية v4.xlsx")
+    df = pd.read_excel("assets_data.xlsx")
     df.columns = df.columns.str.strip()
     return df
 
@@ -32,7 +31,6 @@ def generate_pdf(asset_info):
     pdf.output(temp_pdf.name)
     return temp_pdf.name
 
-# الواجهة الرئيسية
 st.set_page_config(page_title="البحث عن الأصول", layout="centered")
 st.title("🔍 نظام البحث عن الأصول - هيئة المساحة الجيولوجية")
 
